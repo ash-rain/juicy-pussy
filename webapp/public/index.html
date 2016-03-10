@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="juicy">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Juicy Pussy</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<style>
+		html { overflow-y: scroll; }
+		body { padding-top: 50px; }
+		#dns-request-list { margin-bottom: 30px; }
+	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script src="core.js"></script>
+</head>
+<body ng-controller="mainController">
+	<div class="container">
+		<div class="jumbotron text-center">
+			<h1>
+				<span class="label label-info">{{ dnsRequests.length }}</span>
+				DNS Requests
+			</h1>
+		</div>
+		<div id="dns-request-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="checkbox" ng-repeat="dnsRequest in dnsRequests">
+					<label>
+						<input type="checkbox" ng-click="deleteDNSRequest(dnsRequest._id)"> {{ dnsRequest.text }}
+					</label>
+				</div>
+			</div>
+		</div>
+		<div id="dns-request-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+						<input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever"
+						ng-model="formData.text">
+					</div>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createDNSRequest()">Add</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
