@@ -1,0 +1,11 @@
+<ul class="domains">
+	<li *ngFor="#domain of domains"
+		[class.selected]="domain === selectedDomain"
+		(click)="onSelect(domain)">
+		<span class="badge">{{domain.id}}</span> {{domain.name}}
+	</li>
+</ul>
+<div *ngIf="selectedDomain">
+	<h2>{{selectedDomain.name | uppercase}}</h2>
+	<button (click)="gotoDetails()">View Details</button>
+</div>

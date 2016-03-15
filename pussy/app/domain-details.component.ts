@@ -1,21 +1,24 @@
-import {Component} from 'angular2/core';
-import {Domain} from './domain';
+import { Component, OnInit } from 'angular2/core';
+import { RouteParams } from 'angular2/router';
+import { Domain } from './domain';
+import { PussyService } from './pussy.service';
 
 @Component({
 	selector: 'domain-details',
-	inputs: ['domain'],
-	template: `
-	<div *ngIf="domain">
-		<h2>{{domain.name}} details!</h2>
-		<div><label>ID: </label>{{domain.id}}</div>
-		<div>
-			<label>Name: </label>
-			<input [(ngModel)]="domain.name" placeholder="Name"/>
-		</div>
-	</div>
-	`
+	templateUrl: 'app/domain-details.component.html'
 })
 
 export class DomainDetailsComponent {
 	domain: Domain;
+	constructor(
+		private _pussyService: PussyService,
+		private _routeParams: RouteParams) {
+	}
+	ngOnInit() {
+		let id = +this._routeParams.get('id');
+		this._pussyService.getDomain(id).then(domain => this.domain = domain);
+	}
+	goBack() {
+		window.history.back();
+	}
 }
