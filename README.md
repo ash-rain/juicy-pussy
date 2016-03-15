@@ -9,6 +9,9 @@ Managed DNS providing exciting new security strategies combined with the rest of
 Protect hosting servers from being directly accessed from the Internet.
 Instead, the reverse proxy IP is set and kept up to date in the DNS Zone.
 
+Free SSL certificates from letsencrypt.org can be used to provide free HTTPS for servers that don't support encryption.
+Existing encryption setups are also supported.
+
 ## Firewall
 Profiles and prevents malicious requests from reaching the hosting server.
 
