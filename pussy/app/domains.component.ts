@@ -7,7 +7,6 @@ import { PussyService } from './pussy.service';
 @Component({
 	selector: 'domains',
 	templateUrl: 'app/domains.component.html',
-	styleUrls: ['app/domains.component.css'],
 	directives: [DomainDetailsComponent]
 })
 
@@ -22,7 +21,8 @@ export class DomainsComponent implements OnInit {
 		this.getDomains();
 	}
 	getDomains() {
-		this._pussyService.getDomains().then(domains => this.domains = domains);
+		this._pussyService.getDomains()
+			.subscribe(domains => this.domains = domains);
 	}
 	onSelect(domain: Domain) {
 		if(domain == this.selectedDomain) domain = null;

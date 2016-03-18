@@ -16,7 +16,8 @@ export class DomainDetailsComponent {
 	}
 	ngOnInit() {
 		let id = +this._routeParams.get('id');
-		this._pussyService.getDomain(id).then(domain => this.domain = domain);
+		this._pussyService.getDomain(id)
+			.subscribe(domain => this.domain = domain);
 	}
 	goBack() {
 		window.history.back();

@@ -1,4 +1,5 @@
 import { Component } from 'angular2/core';
+import { HTTP_PROVIDERS } from 'angular2/http';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import { PussyService } from './pussy.service';
 import { DashboardComponent } from './dashboard.component';
@@ -8,9 +9,9 @@ import { DomainDetailsComponent } from './domain-details.component';
 @Component({
 	selector: 'pussy',
 	templateUrl: 'app/app.component.html',
-	styleUrls: ['app/app.component.css'],
 	directives: [ROUTER_DIRECTIVES],
 	providers: [
+    	HTTP_PROVIDERS,
 		ROUTER_PROVIDERS,
 		PussyService
 	]
@@ -27,7 +28,7 @@ import { DomainDetailsComponent } from './domain-details.component';
 		name: 'Domains',
 		component: DomainsComponent
 	}, {
-		path: '/domain/:id',
+		path: '/domains/:id',
 		name: 'DomainDetails',
 		component: DomainDetailsComponent
 	}

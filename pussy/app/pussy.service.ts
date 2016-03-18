@@ -1,21 +1,33 @@
-import {DOMAINS} from './mock-domains';
-import {Domain} from './domain';
-import {Injectable} from 'angular2/core';
+import { Injectable } from 'angular2/core';
+import { Http, Response } from 'angular2/http';
+import { Domain } from './domain';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx'
 
 @Injectable()
 
 export class PussyService {
-	getDomains() {
-		return Promise.resolve(DOMAINS);
+	private _apiUrl(path) {
+		return 'http://localhost:3000/api/' + path;
 	}
-	getDomainsSlow() {
-		return new Promise<Domain[]>(resolve =>
-			setTimeout(() => resolve(DOMAINS), 2000)
-		);
+	private _apiCallGet(path) {
+		return this.http.get(this._apiUrl(path));
+	}
+
+	constructor (private http: Http) {}
+
+	getDomains() {
+		return this._apiCallGet('Domains')
+			.map(res => <Domain[]> res.json())
+			.catch(this.handleError);
 	}
 	getDomain(id: number) {
-		return Promise.resolve(DOMAINS).then(
-			domains => domains.filter(domain => domain.id === id)[0]
-		);
+		return this._apiCallGet('Domains/' + id.toString())
+			.map(res => <Domain> res.json())
+			.catch(this.handleError);
+	}
+	private handleError(error: Response) {
+		console.error(error);
+		return Observable.throw(error.json().error || 'Server error');
 	}
 }

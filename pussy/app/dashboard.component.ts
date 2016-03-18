@@ -5,8 +5,7 @@ import { PussyService } from './pussy.service';
 
 @Component({
   selector: 'dashboard',
-  templateUrl: 'app/dashboard.component.html',
-  styleUrls: ['app/dashboard.component.css']
+  templateUrl: 'app/dashboard.component.html'
 })
 
 export class DashboardComponent implements OnInit {
@@ -17,7 +16,7 @@ export class DashboardComponent implements OnInit {
   }
   ngOnInit() {
     this._pussyService.getDomains()
-      .then(domains => this.domains = domains.slice(1, 5));
+      .subscribe(domains => this.domains = domains);
   }
   gotoDetails(domain: Domain) {
     let link = ['DomainDetails', { id: domain.id }];
