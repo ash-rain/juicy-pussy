@@ -7,6 +7,10 @@ import 'rxjs/Rx'
 @Injectable()
 
 export class PussyService {
+	private handleError(error: Response) {
+		console.error(error);
+		return Observable.throw(error.json().error || 'Server error');
+	}
 	private _apiUrl(path) {
 		return 'http://localhost:3000/api/' + path;
 	}
@@ -21,13 +25,9 @@ export class PussyService {
 			.map(res => <Domain[]> res.json())
 			.catch(this.handleError);
 	}
-	getDomain(id: number) {
-		return this._apiCallGet('Domains/' + id.toString())
+	getDomain(id: any) {
+		return this._apiCallGet('Domains/' + id)
 			.map(res => <Domain> res.json())
 			.catch(this.handleError);
-	}
-	private handleError(error: Response) {
-		console.error(error);
-		return Observable.throw(error.json().error || 'Server error');
 	}
 }
