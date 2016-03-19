@@ -1,6 +1,18 @@
-<h1>{{title}}</h1>
-<nav>
-	<a [routerLink]="['Dashboard']">Dashboard</a>
-	<a [routerLink]="['Domains']">Domains</a>
-</nav>
-<router-outlet></router-outlet>
+<h3 class="subheading">
+	{{title}}
+	<small>internet security</small>
+</h3>
+<section class="row">
+	<div class="small-16">
+		<ul class="menu">
+			<li [class.active]="isActive(['Dashboard'])">
+				<a [routerLink]="['Dashboard']"><i class="fi-list"></i> <span>Dashboard</span></a></li>
+			<li [class.active]="isActive(['Domains'])">
+				<a [routerLink]="['Domains']"><i class="fi-list"></i> <span>Domains</span></a></li>
+		</ul>
+	</div>
+</section>
+<hr>
+<section>
+	<router-outlet></router-outlet>
+</section>

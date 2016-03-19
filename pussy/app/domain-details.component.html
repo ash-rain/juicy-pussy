@@ -1,6 +1,9 @@
 <div *ngIf="domain">
-	<h2>{{domain.name}} details!</h2>
-	<button (click)="goBack()">Back</button>
+	<h3>
+	<button class="button" (click)="goBack()"><i class="fi-list"></i> BACK</button>
+		{{domain.name}} details
+		
+	</h3>
 	<div><label>ID: </label>{{domain.id}}</div>
 	<div>
 		<label>Name: </label>

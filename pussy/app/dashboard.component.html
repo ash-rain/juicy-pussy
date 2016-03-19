@@ -1,7 +1,8 @@
 <h3>Active Domains</h3>
-<div class="grid grid-pad">
-  <div *ngFor="#domain of domains" (click)="gotoDetails(domain)" class="col-1-4" >
-    <div class="module domain">
+<div class="row">
+  <div *ngFor="#domain of domains" (click)="gotoDetails(domain)"
+    class="small-6 large-3 columns" data-animate="fade-in fade-out">
+    <div class="large expanded button">
       <h4>{{domain.name}}</h4>
     </div>
   </div>

@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core';
 import { HTTP_PROVIDERS } from 'angular2/http';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import { Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import { PussyService } from './pussy.service';
 import { DashboardComponent } from './dashboard.component';
 import { DomainsComponent } from './domains.component';
@@ -36,4 +36,9 @@ import { DomainDetailsComponent } from './domain-details.component';
 
 export class AppComponent {
 	title = 'Juicy Pussy';
+	constructor(public router: Router) {
+	}
+	isActive(instruction: any[]): boolean {
+		return this.router.isRouteActive(this.router.generate(instruction));
+	}
 }

@@ -1,16 +1,32 @@
-<ul class="domains">
-	<li *ngFor="#domain of domains"
-		[class.selected]="domain === selectedDomain"
-		data-open="details-modal"
-		(click)="onSelect(domain)">
-		<span class="label">{{domain.id}}</span> {{domain.name}}
-	</li>
-</ul>
-<div *ngIf="selectedDomain">
-	<h2>{{selectedDomain.name | uppercase}}</h2>
-	<p>ID: {{selectedDomain.id}}</p>
-	<button (click)="gotoDetails()">View Details</button>
-	<button class="close-button" data-close aria-label="Close modal" type="button">
-		<span aria-hidden="true">&times;</span>
-	</button>
+<div class="row">
+	<div class="small-6 columns">
+		<table class="hover stack">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Domain</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="#domain of domains"
+					[class.selected]="domain === selectedDomain"
+					(click)="onSelect(domain)">
+					<td>
+						<span class="label">{{domain.id}}</span>
+					</td>
+					<td>{{domain.name}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="small-6 columns">
+		<div *ngIf="selectedDomain">
+			<h3>{{selectedDomain.name | uppercase}}</h3>
+			<p>ID: {{selectedDomain.id}}</p>
+			<button (click)="gotoDetails()">View Details</button>
+			<button class="close-button" data-close aria-label="Close modal" type="button">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</div>
 </div>
