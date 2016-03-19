@@ -12,6 +12,9 @@ export class PussyService {
 		return Observable.throw(error.json().error || 'Server error');
 	}
 	private _apiUrl(path) {
+		switch(process.env.NODE_ENV) {
+			case 'azure': return 'http://juicypussy.cloudapp.net:3000/api/' + path;
+		}
 		return 'http://localhost:3000/api/' + path;
 	}
 	private _apiCallGet(path) {
