@@ -1,10 +1,12 @@
-var http = require('http');
-var fs = require('fs');
+var express = require('express');
+var app = express();
 
-http.createServer(function(req, res){
-	fs.readFile('index.html',function (err, data){
-		res.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
-		res.write(data);
-		res.end();
-	});
-}).listen(3001);
+app.use('/node_modules', express.static('node_modules'));
+
+app.get('/', function (req, res) {
+	res.sendFile('index.html');
+});
+
+app.listen(3001, function () {
+	console.log('Listening on port 3001.');
+});
