@@ -1,5 +1,4 @@
-# Juicy Pussy
-Website security platform.
+Website security platform, consisting of several NodeJS projects.
 
 ## DNS Server
 Managed DNS providing exciting new security strategies combined with the rest of the stack.
